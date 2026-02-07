@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lyxeen | Soft Fabrics & Modern Daily Wear Dresses</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --pastel-pink: #ffd9e8;
+            --peach: #ffc8b5;
+            --cream: #fff7f0;
+            --light-gray: #f8f8f8;
+            --text-dark: #5a5a5a;
+            --text-light: #888;
+            --border-color: #eee;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+            background-color: var(--cream);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 28px;
+            font-weight: 600;
+            color: #ff7bac;
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--text-dark);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 16px;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #ff7bac;
+        }
+
+        .nav-links a.active {
+            color: #ff7bac;
+        }
+
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #ff7bac;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            font-size: 24px;
+            background: none;
+            border: none;
+            color: var(--text-dark);
+            cursor: pointer;
+        }
+
+        /* Main Content */
+        main {
+            min-height: calc(100vh - 180px);
+        }
+
+        /* Home Page */
+        .hero {
+            height: 85vh;
+            background: linear-gradient(135deg, var(--pastel-pink) 0%, var(--peach) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            z-index: 2;
+            padding: 20px;
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: #5a5a5a;
+            font-weight: 600;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            color: #777;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #ff7bac;
+            color: white;
+            padding: 14px 32px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #ff5a94;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 122, 172, 0.3);
+        }
+
+        /* Catalog Page */
+        .page-header {
+            text-align: center;
+            padding: 60px 0 30px;
+        }
+
+        .page-header h1 {
+            font-size: 42px;
+            color: #5a5a5a;
+        }
+
+        .collection-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            padding: 40px 0 80px;
+        }
+
+        .dress-card {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .dress-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .dress-img {
+            height: 320px;
+            width: 100%;
+            object-fit: cover;
+            background-color: var(--light-gray);
+        }
+
+        .dress-info {
+            padding: 20px;
+        }
+
+        .dress-name {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #5a5a5a;
+        }
+
+        .dress-price {
+            color: #ff7bac;
+            font-weight: 600;
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        .order-info {
+            background-color: var(--light-gray);
+            padding: 10px 15px;
+            border-radius: 6px;
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        /* About Page */
+        .about-section {
+            padding: 40px 0 80px;
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .about-section h2 {
+            font-size: 32px;
+            color: #5a5a5a;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+
+        .about-section p {
+            margin-bottom: 20px;
+            font-size: 17px;
+            color: #666;
+        }
+
+        .highlight-box {
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin: 40px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border-left: 4px solid #ff7bac;
+        }
+
+        /* Contact Page */
+        .contact-section {
+            padding: 40px 0 80px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .instagram-contact {
+            background-color: white;
+            padding: 40px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .instagram-contact i {
+            font-size: 48px;
+            color: #E1306C;
+            margin-bottom: 20px;
+        }
+
+        .instagram-contact h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .instagram-contact p {
+            margin-bottom: 20px;
+            color: #666;
+        }
+
+        .insta-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background-color: #E1306C;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .insta-link:hover {
+            background-color: #C13584;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(225, 48, 108, 0.3);
+        }
+
+        .email-form {
+            background-color: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            background-color: white;
+            padding: 40px 0 20px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 24px;
+            font-weight: 600;
+            color: #ff7bac;
+            margin-bottom: 20px;
+        }
+
+        .footer-logo span {
+            color: var(--text-dark);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #ff7bac;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--light-gray);
+            border-radius: 50%;
+            color: var(--text-dark);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: #ff7bac;
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .cod-info {
+            background-color: var(--pastel-pink);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .copyright {
+            color: var(--text-light);
+            font-size: 14px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            width: 100%;
+        }
+
+        /* Page Content Animation */
+        .page-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .page-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                margin: 10px 0;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero p {
+                font-size: 18px;
+            }
+
+            .page-header h1 {
+                font-size: 32px;
+            }
+
+            .collection-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+
+            .instagram-contact, .email-form {
+                padding: 25px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 28px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .btn {
+                padding: 12px 25px;
+            }
+
+            .dress-img {
+                height: 280px;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">Lyx<span>een</span></a>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#" class="nav-link active" data-page="home">Home</a></li>
+                <li><a href="#" class="nav-link" data-page="catalog">Catalog</a></li>
+                <li><a href="#" class="nav-link" data-page="about">About</a></li>
+                <li><a href="#" class="nav-link" data-page="contact">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Home Page -->
+        <section id="home" class="page-content active">
+            <div class="hero">
+                <div class="hero-content">
+                    <h1>Lyxeen</h1>
+                    <p>Welcome to Lyxeen 🌸 Soft fabrics & modern daily wear dresses</p>
+                    <a href="#" class="btn" data-page="catalog">Browse Catalog</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Catalog Page -->
+        <section id="catalog" class="page-content">
+            <div class="page-header">
+                <h1>Summer Collection</h1>
+                <p>Modern dresses for everyday elegance</p>
+            </div>
+            
+            <div class="container">
+                <div class="collection-grid" id="dressCollection">
+                    <!-- Dress items will be inserted here by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- About Page -->
+        <section id="about" class="page-content">
+            <div class="page-header">
+                <h1>Our Story</h1>
+                <p>Soft fabrics, modern style, everyday elegance</p>
+            </div>
+            
+            <div class="container about-section">
+                <div class="about-content">
+                    <h2>Welcome to Lyxeen</h2>
+                    <p>Lyxeen was born from a simple idea: everyday dresses should be as comfortable as they are beautiful. We believe that modern women deserve clothing that moves with them, adapts to their busy lives, and makes them feel confident and elegant from morning to night.</p>
+                    
+                    <div class="highlight-box">
+                        <p>Our mission is to create thoughtfully designed dresses using only the softest, highest-quality fabrics that feel wonderful against your skin while maintaining their shape and beauty wash after wash.</p>
+                    </div>
+                    
+                    <h2>Why Choose Lyxeen</h2>
+                    <p>At Lyxeen, we focus on three core principles that set our dresses apart:</p>
+                    
+                    <p><strong>Soft Fabrics:</strong> We carefully select materials that are gentle on your skin, breathable, and durable. Each fabric is tested for comfort and quality before being used in our collections.</p>
+                    
+                    <p><strong>Modern Designs:</strong> Our designs blend contemporary style with timeless elegance. We create dresses that work for various occasions - from casual brunches to office days to special evenings out.</p>
+                    
+                    <p><strong>Thoughtful Details:</strong> Every Lyxeen dress includes thoughtful details - from perfectly placed seams that flatter your silhouette to functional pockets and adjustable elements that make each piece uniquely yours.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Page -->
+        <section id="contact" class="page-content">
+            <div class="page-header">
+                <h1>Get In Touch</h1>
+                <p>We'd love to hear from you</p>
+            </div>
+            
+            <div class="container contact-section">
+                <div class="contact-methods">
+                    <div class="instagram-contact">
+                        <i class="fab fa-instagram"></i>
+                        <h3>Connect With Us on Instagram</h3>
+                        <p>For inquiries, orders, or styling advice, send us a DM on Instagram. We typically respond within 24 hours.</p>
+                        <a href="https://instagram.com" target="_blank" class="insta-link">
+                            <i class="fab fa-instagram"></i> @lyxeen.official
+                        </a>
+                    </div>
+                    
+                    <div class="email-form">
+                        <h3>Send us a Message</h3>
+                        <p>For general inquiries, you can also use the form below. We'll get back to you as soon as possible.</p>
+                        
+                        <form id="contactForm">
+                            <div class="form-group">
+                                <label for="name">Your Name</label>
+                                <input type="text" id="name" placeholder="Enter your name" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" placeholder="Enter your email" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message">Your Message</label>
+                                <textarea id="message" placeholder="Tell us what's on your mind..." required></textarea>
+                            </div>
+                            
+                            <button type="submit" class="btn">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">Lyx<span>een</span></div>
+                
+                <div class="footer-links">
+                    <a href="#" data-page="home">Home</a>
+                    <a href="#" data-page="catalog">Catalog</a>
+                    <a href="#" data-page="about">About</a>
+                    <a href="#" data-page="contact">Contact</a>
+                </div>
+                
+                <div class="social-links">
+                    <a href="https://instagram.com" target="_blank" title="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+                
+                <div class="cod-info">
+                    <i class="fas fa-shopping-bag"></i> Cash on Delivery Available
+                </div>
+                
+                <div class="copyright">
+                    &copy; 2026 Lyxeen. All rights reserved.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const navLinksContainer = document.getElementById('navLinks');
+            const pageContents = document.querySelectorAll('.page-content');
+            
+            // Initialize catalog with dress items
+            initializeCatalog();
+            
+            // Mobile menu toggle
+            mobileMenuBtn.addEventListener('click', function() {
+                navLinksContainer.classList.toggle('active');
+                const icon = mobileMenuBtn.querySelector('i');
+                if (navLinksContainer.classList.contains('active')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                } else {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+            
+            // Navigation click handler
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const pageId = this.getAttribute('data-page');
+                    
+                    // Update active nav link
+                    navLinks.forEach(nav => nav.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Show selected page
+                    pageContents.forEach(page => {
+                        page.classList.remove('active');
+                    });
+                    document.getElementById(pageId).classList.add('active');
+                    
+                    // Close mobile menu if open
+                    if (navLinksContainer.classList.contains('active')) {
+                        navLinksContainer.classList.remove('active');
+                        const icon = mobileMenuBtn.querySelector('i');
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                    
+                    // Scroll to top
+                    window.scrollTo(0, 0);
+                });
+            });
+            
+            // Footer links navigation
+            document.querySelectorAll('.footer-links a').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const pageId = this.getAttribute('data-page');
+                    
+                    // Update active nav link in header
+                    navLinks.forEach(nav => {
+                        nav.classList.remove('active');
+                        if (nav.getAttribute('data-page') === pageId) {
+                            nav.classList.add('active');
+                        }
+                    });
+                    
+                    // Show selected page
+                    pageContents.forEach(page => {
+                        page.classList.remove('active');
+                    });
+                    document.getElementById(pageId).classList.add('active');
+                    
+                    // Scroll to top
+                    window.scrollTo(0, 0);
+                });
+            });
+            
+            // Contact form submission
+            document.getElementById('contactForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Get form data
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const message = document.getElementById('message').value;
+                
+                // In a real implementation, you would send this data to a server
+                // For this demo, we'll just show an alert
+                alert(`Thank you, ${name}! Your message has been sent. We'll get back to you at ${email} as soon as possible.`);
+                
+                // Reset form
+                this.reset();
+            });
+            
+            // Initialize catalog with dress items
+            function initializeCatalog() {
+                const dressCollection = document.getElementById('dressCollection');
+                
+                const dresses = [
+                    { id: 1, name: "Blush Summer Dress", price: "$89", img: "dress1.jpg" },
+                    { id: 2, name: "Peach Breeze Maxi", price: "$95", img: "dress2.jpg" },
+                    { id: 3, name: "Cream Linen Midi", price: "$78", img: "dress3.jpg" },
+                    { id: 4, name: "Pastel Floral Wrap", price: "$82", img: "dress4.jpg" },
+                    { id: 5, name: "Soft Pink Shift", price: "$75", img: "dress5.jpg" },
+                    { id: 6, name: "Rose Garden Sundress", price: "$88", img: "dress6.jpg" },
+                    { id: 7, name: "Peach Sleeveless", price: "$72", img: "dress7.jpg" },
+                    { id: 8, name: "Lilac Day Dress", price: "$85", img: "dress8.jpg" }
+                ];
+                
+                // Since we don't have actual images, we'll use placeholder colors
+                const placeholderColors = [
+                    "#ffd9e8", "#ffc8b5", "#ffdfc9", "#ffd1dc", 
+                    "#f8c6d0", "#ffb8c6", "#ffccd5", "#f8b8c6"
+                ];
+                
+                dresses.forEach((dress, index) => {
+                    const dressCard = document.createElement('div');
+                    dressCard.className = 'dress-card';
+                    
+                    dressCard.innerHTML = `
+                        <div class="dress-img" style="background-color: ${placeholderColors[index]};"></div>
+                        <div class="dress-info">
+                            <h3 class="dress-name">${dress.name}</h3>
+                            <div class="dress-price">${dress.price}</div>
+                            <div class="order-info">
+                                <i class="fas fa-shopping-bag"></i> Order via Instagram DM only
+                            </div>
+                        </div>
+                    `;
+                    
+                    dressCollection.appendChild(dressCard);
+                });
+            }
+            
+            // Browse Catalog button on home page
+            document.querySelector('.hero .btn').addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Update active nav link
+                navLinks.forEach(nav => {
+                    nav.classList.remove('active');
+                    if (nav.getAttribute('data-page') === 'catalog') {
+                        nav.classList.add('active');
+                    }
+                });
+                
+                // Show catalog page
+                pageContents.forEach(page => {
+                    page.classList.remove('active');
+                });
+                document.getElementById('catalog').classList.add('active');
+                
+                // Scroll to top
+                window.scrollTo(0, 0);
+            });
+        });
+    </script>
+</body>
+</html>
